@@ -1,0 +1,20 @@
+{
+  "name": "frontend",
+  "version": "0.0.1",
+  "description": "TAK-WEB-MAP frontend",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "beefy app.js:bundle.js --live",
+    "bundle": "browserify app.js | uglifyjs > bundle.js"
+  },
+  "author": "Stefan Gofferje",
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "leaflet": "^1.7.1"
+  },
+  "devDependencies": {
+    "beefy": "^2.1.8",
+    "browserify": "^17.0.0"
+  }
+}
