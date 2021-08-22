@@ -14,15 +14,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/list', (req, res) => {
-  let points = '{';
   list = objectCache.keys();
-  for (const key of list) {
-    point = objectCache.get(key);
-    console.log(point);
-    points += "'"+key+"':"+util.inspect(point)+",";
-  }
-  points = points.slice(0, -1);
-  points += '}';
+  points = objectCache.mget(list);
+  console.log('{"Timestamp":"' + Date.now() + '","IP":"' + req.ip + '","Method":"' + req.method + '","URL":"' + req.url + '","Result":"300","Parameters":[' + JSON.stringify(req.body) + ']}');
   res.setHeader('Content-Type', 'application/json');
   res.send(points);
 })
@@ -67,7 +61,6 @@ conn.on('data', function (data) {
       else remarks="";
 
       obj = {
-        "uid":uid,
         "type":type,
         "callsign":callsign,
         "start":start,
@@ -79,7 +72,6 @@ conn.on('data', function (data) {
       ttl = helper.findCotTtl(obj.start,obj.stale);
       success = objectCache.set(uid,obj,ttl);
       console.log(uid+" "+ttl+"s "+success);
-      console.log('---------------------------------------------------------');
     }
   } catch(e) {
     console.error('error', e, data.toString());
