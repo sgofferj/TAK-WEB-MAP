@@ -51,8 +51,6 @@ var precip = new L.TileLayer('https://tilecache.rainviewer.com/v2/radar/' + pars
   attribution: '<a href="https://rainviewer.com" target="_blank">rainviewer.com</a>'
 });
 
-
-
 var basemaps = {
   "OpenStreetMap": osm,
   "OpenTopoMap": otm,

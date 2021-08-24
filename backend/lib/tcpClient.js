@@ -19,7 +19,7 @@ const run = () => {
 			clearIntervalConnect()
 			console.debug(`Connected to remote TCP host ${cotAddress}:${cotPort}`)
 			const hello = helper.helloPkg();
-	    client.write(hello);
+			client.write(hello);
 		})
 	}
 

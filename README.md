@@ -33,4 +33,6 @@ Please feel free to report bugs, make suggestions or submit pull requests! Howev
 (C) 2021 Stefan Gofferje
 
 ## Thanks
-Many thanks to https://github.com/dbussert for the initial bouncing back and forth of ideas and giving helpful hints for the and a bunch of great snippets of code! Check out his TAK server implementation at https://github.com/vidterra/multitak.
+- https://github.com/dbussert for the initial bouncing back and forth of ideas and giving helpful hints for the and a bunch of great snippets of code! Check out his TAK server implementation at https://github.com/vidterra/multitak.
+
+- https://github.com/ampledata for https://github.com/ampledata/adsbcot and the first web map implementation in NodeRED.

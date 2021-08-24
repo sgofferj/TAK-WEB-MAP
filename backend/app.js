@@ -9,17 +9,6 @@ process.env.TZ = 'UTC';
 require('./lib/tcpClient.js')
 require('./lib/sslClient.js')
 
-var conn;
-
-// Mandatory ENVVARS
-if (!("TAK_ADDR" in process.env)) helper.failExit('Missing TAK_ADDR');
-
-// ENVVARS
-const PORT = process.env.PORT || 3000;
-const TAK_PORT = process.env.TAK_PORT || 8087;
-const TAK_SSL = process.env.TAK_SSL || false;
-const TAK_ADDR = process.env.TAK_ADDR;
-
 app.use(express.static(__dirname + "/../frontend"));
 
 app.get('/', (req, res) => {
@@ -36,6 +25,6 @@ app.get('/list', (req, res) => {
   helper.cLog(req);
 })
 
-app.listen(PORT, () => {
-  console.log(`Started`);
+app.listen(3000, () => {
+  console.log(`TAK-WEB-MAP server started`);
 })
