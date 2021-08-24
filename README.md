@@ -21,10 +21,10 @@ If using ssl, the certificates need to be mounted to the container.
 
 ## Notes
 #### ADS-B feeds
-TAK-WEB-MAP will display the `hae` attribute as altitude next to the icon on the map and will search in the `remarks` attribute for a squawk code if the `uid` attribute of a CoT object starts with "ICAO-". One great ADS-B feed program which sends Cot's this way is https://github.com/ampledata/adsbcot
+TAK-WEB-MAP will display the `hae` attribute as altitude next to the icon on the map and will search in the `remarks` attribute for a squawk code if the `uid` attribute of a CoT object starts with "ICAO-". One great ADS-B feed program which sends CoT's this way is https://github.com/ampledata/adsbcot
 
 ## License
-TAK-WEB-MAP is licensed under the **GNU Affero General Public License** Version 3 or later.
+TAK-WEB-MAP is licensed under the [**GNU Affero General Public License**](https://www.gnu.org/licenses/agpl-3.0.en.html) Version 3 or later.
 
 ## Contribute
 Please feel free to report bugs, make suggestions or submit pull requests! However, the project maintainer (me) is a family dad with a relatively busy schedule and doing this project entirely in his free time, so development might stall every once in a while.
