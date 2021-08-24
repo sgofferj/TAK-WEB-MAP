@@ -14,22 +14,42 @@ app.get('/', (req, res) => {
 })
 
 app.get('/list', (req, res) => {
+  var points = [];
   list = objectCache.keys();
-  points = objectCache.mget(list);
+  cache = objectCache.mget(list);
+  for (const [uid, cot] of Object.entries(cache)) {
+    points.push([uid,cot]);
+  }
   console.log('{"Timestamp":"' + Date.now() + '","IP":"' + req.ip + '","Method":"' + req.method + '","URL":"' + req.url + '","Result":"300","Parameters":[' + JSON.stringify(req.body) + ']}');
   res.setHeader('Content-Type', 'application/json');
   res.send(points);
 })
 
+app.get('/test', (req, res) => {
+  var points = [];
+  list = objectCache.keys();
+  cache = objectCache.mget(list);
+  for (const [uid, cot] of Object.entries(cache)) {
+    points.push([uid,cot]);
+  }
+  console.log('{"Timestamp":"' + Date.now() + '","IP":"' + req.ip + '","Method":"' + req.method + '","URL":"' + req.url + '","Result":"300","Parameters":[' + JSON.stringify(req.body) + ']}');
+
+  points.forEach((point) => {
+    console.log (point[0]);
+  });
+  res.send(points);
+
+})
+
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Started`);
 })
 
 var tls = require('tls'),
     fs = require('fs');
 
 var options = {
-  host: "192.168.10.201",
+  host: "tak.gofferje.net",
   port: 8089,
   key: fs.readFileSync('key.pem'),
   cert: fs.readFileSync('cert.pem'),
@@ -68,10 +88,9 @@ conn.on('data', function (data) {
         "point":point,
         "remarks":remarks
       }
-
+      console.log(util.inspect(obj));
       ttl = helper.findCotTtl(obj.start,obj.stale);
       success = objectCache.set(uid,obj,ttl);
-      console.log(uid+" "+ttl+"s "+success);
     }
   } catch(e) {
     console.error('error', e, data.toString());

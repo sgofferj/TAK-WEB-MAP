@@ -1,5 +1,8 @@
+body {
+  margin: 0;
+}
 #map
 {
     width: auto;
-    height: 90vh;
+    height: 100vh;
 }
