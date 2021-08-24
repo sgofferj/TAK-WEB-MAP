@@ -12,6 +12,7 @@
     "@vidterra/tak.js": "^0.0.6",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
+    "module-alias": "^2.2.2",
     "node-cache": "^5.1.2",
     "tls": "^0.0.1"
   }

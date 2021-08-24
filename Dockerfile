@@ -1,8 +1,10 @@
 FROM node:15-alpine
 
 EXPOSE 3000
-ENV VERSION=0.0.1
+ENV VERSION=20210824155409
+
 RUN apk add git
+RUN npm install -g npm@7.21.0
 RUN npm install -g browserify
 RUN npm install -g uglify-js
 
