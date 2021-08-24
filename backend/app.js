@@ -6,9 +6,6 @@ const helper = require('./lib/helper.js');
 
 process.env.TZ = 'UTC';
 
-console.log(helper.helloPkg());
-//process.exit(0);
-
 require('./lib/tcpClient.js')
 require('./lib/sslClient.js')
 
