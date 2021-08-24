@@ -10,12 +10,12 @@
 
 ## Configuration
 TAK-WEB-MAP is configured through environment variables:
- Variable | example | explanation
+Variable | example | explanation
 --- | --- | ---
- REMOTE_TCP_SERVER | tcp://127.0.0.1:8087 | TAK server and port to connect through tcp
- REMOTE_SSL_SERVER | ssl://127.0.0.1:8089 | TAK server and port to connect through ssl
- REMOTE_SSL_SERVER_CERTIFICATE | /data/cert.pem | TAK user certificate in PEM format
- REMOTE_SSL_SERVER_KEY | /data/key.pem | TAK user certificate secret key in PEM format
+REMOTE_TCP_SERVER | tcp://127.0.0.1:8087 | TAK server and port to connect through tcp
+REMOTE_SSL_SERVER | ssl://127.0.0.1:8089 | TAK server and port to connect through ssl
+REMOTE_SSL_SERVER_CERTIFICATE | /data/cert.pem | TAK user certificate in PEM format
+REMOTE_SSL_SERVER_KEY | /data/key.pem | TAK user certificate secret key in PEM format
 
 If using ssl, the certificates need to be mounted to the container.
 
