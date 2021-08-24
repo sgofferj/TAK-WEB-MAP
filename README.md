@@ -1,7 +1,7 @@
 # TAK-WEB-MAP
-## Web-based map display for TAK servers, intended for containerized deployment
+**Web-based map display for TAK servers, intended for containerized deployment**
 
-# VERY VERY EARLY DEVELOPMENT STATE - BUGS VERY POSSIBLE
+**VERY VERY EARLY DEVELOPMENT STATE - BUGS VERY POSSIBLE**
 
 ## Features
 - Connects via TCP and SSL
