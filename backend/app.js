@@ -2,6 +2,7 @@ const util = require('util');
 const express = require('express');
 const net = require('net');
 const helper = require('./lib/helper.js');
+const objects = require('./lib/objectcache.js')
 
 process.env.TZ = 'UTC';
 
@@ -21,7 +22,7 @@ app.get('/', (req, res) => {
 
 app.get('/list', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  points = helper.getObjectList();
+  points = objects.getAll();
   res.send(points);
   helper.cLog(req);
 })

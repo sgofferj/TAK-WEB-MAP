@@ -1,5 +1,6 @@
 const {cot} = require("@vidterra/tak.js")
 const helper = require('./helper.js')
+const objects = require('./objectcache.js')
 const net = require('net')
 
 const url = process.env.REMOTE_TCP_SERVER
@@ -35,7 +36,7 @@ const run = () => {
 	}
 
 	client.on('data', (data) => {
-		helper.handleData(data);
+		objects.store(data);
 	})
 
 	client.on('error', (err) => {

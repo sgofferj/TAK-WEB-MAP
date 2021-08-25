@@ -1,8 +1,7 @@
-const {
-  cot
-} = require("@vidterra/tak.js")
+const {cot} = require("@vidterra/tak.js")
 const fs = require('fs')
 const helper = require('./helper.js')
+const objects = require('./objectcache.js')
 const tls = require('tls')
 
 const url = process.env.REMOTE_SSL_SERVER
@@ -32,7 +31,7 @@ const run = () => {
   })
 
   client.on('data', (data) => {
-    helper.handleData(data);
+    objects.store(data);
   })
 
   client.on('error', (err) => {
