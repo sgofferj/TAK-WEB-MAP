@@ -1,13 +1,14 @@
 const util = require('util');
 const express = require('express');
 const net = require('net');
-const app = express();
 const helper = require('./lib/helper.js');
 
 process.env.TZ = 'UTC';
 
 require('./lib/tcpClient.js')
 require('./lib/sslClient.js')
+
+const app = express();
 
 app.use(express.static(__dirname + "/../frontend"));
 
