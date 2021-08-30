@@ -16,6 +16,7 @@ REMOTE_TCP_SERVER | tcp://127.0.0.1:8087 | TAK server and port to connect throug
 REMOTE_SSL_SERVER | ssl://127.0.0.1:8089 | TAK server and port to connect through ssl
 REMOTE_SSL_SERVER_CERTIFICATE | /data/cert.pem | TAK user certificate in PEM format
 REMOTE_SSL_SERVER_KEY | /data/key.pem | TAK user certificate secret key in PEM format
+SITENAME | TAK-WEB-MAP | The sitename to display in the navigation bar and page title
 
 If using ssl, the certificates need to be mounted to the container.
 

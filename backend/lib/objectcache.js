@@ -1,3 +1,4 @@
+const util = require("util");
 const NodeCache = require("node-cache");
 const objectCache = new NodeCache({
   stdTTL: 60,
@@ -11,13 +12,15 @@ module.exports.store = (data) => {
     const result = helper.findCotTcp(data);
     for (const message of result) {
       msg = cot.xml2js(message);
-      console.log(msg);
+//      console.log(util.inspect(msg,{depth:Infinity}));
       uid = msg.event._attributes.uid;
       type = msg.event._attributes.type;
       start = msg.event._attributes.start;
       stale = msg.event._attributes.stale;
       callsign = msg.event.detail.contact._attributes.callsign;
       point = msg.event.point._attributes;
+      track = (msg.event.detail.hasOwnProperty('track')) ? msg.event.detail.track._attributes : undefined;
+      console.log(track);
       if (msg.event.detail.hasOwnProperty('remarks')) {
         remarks = msg.event.detail.remarks._text;
       } else remarks = "";
@@ -27,6 +30,7 @@ module.exports.store = (data) => {
         "start": start,
         "stale": stale,
         "point": point,
+        "track": track,
         "remarks": remarks
       }
       ttl = helper.findCotTtl(obj.start, obj.stale);

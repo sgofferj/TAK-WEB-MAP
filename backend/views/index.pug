@@ -1,0 +1,12 @@
+- var name="index"
+
+doctype html
+html
+  head
+    title=`${sitename} - ${version}`
+    include partials/head.pug
+  body
+    include partials/navbar.pug
+    div(id="map") 
+
+    script(type="text/javascript" src="bundle.js")

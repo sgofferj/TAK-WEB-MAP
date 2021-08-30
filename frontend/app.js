@@ -69,28 +69,28 @@ startMap = Object.keys(basemaps)[0];
 basemaps[startMap].addTo(map);
 
 function updateMarkers(markers) {
-  for (var point in markers) {
-    var uid = markers[point][0];
+  for (var id in markers) {
+    var uid = markers[id][0];
     var oldIndex = markersCurrent.findIndex(row => row.includes(uid));
     if ( oldIndex != -1 ) {                                                     // Point exists?
-      lat = markers[point][1].point.lat;
-      lon = markers[point][1].point.lon;
+      lat = markers[id][1].point.lat;
+      lon = markers[id][1].point.lon;
       olat = markersCurrent[oldIndex][1].point.lat;
       olon = markersCurrent[oldIndex][1].point.lon;
       if ( (lat != olat) || (lon != olon) ) {                                   // Point has changed position?
         $(".leaflet-marker-icon.marker-"+uid).remove();
         $(".leaflet-marker-shadow.marker-"+uid).remove();
-        var marker = functions.newMarker(uid,markers[point][1]).addTo(map);
-        marker._icon.classList.add("marker-" + markers[point][0]);
+        var marker = functions.newMarker(uid,markers[id][1]).addTo(map);
+        marker._icon.classList.add("marker-" + markers[id][0]);
       }
     } else {                                                                    // Point does not yet exist
-      var marker = functions.newMarker(uid,markers[point][1]).addTo(map);
-      marker._icon.classList.add("marker-" + markers[point][0]);
+      var marker = functions.newMarker(uid,markers[id][1]).addTo(map);
+      marker._icon.classList.add("marker-" + markers[id][0]);
 
     }
   }
-  for (var point in markersCurrent) {                                           // Check local storage for objects that weren't in the last message any more
-    var uid = markersCurrent[point][0];
+  for (var id in markersCurrent) {                                           // Check local storage for objects that weren't in the last message any more
+    var uid = markersCurrent[id][0];
     var newIndex = markers.findIndex(row => row.includes(uid));
     if (newIndex == -1) {
       $(".leaflet-marker-icon.marker-"+uid).remove();

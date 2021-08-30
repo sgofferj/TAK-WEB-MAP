@@ -1,8 +1,9 @@
 const util = require('util');
 const express = require('express');
+const routes = require('./routes/index');
+const path = require('path');
 const net = require('net');
-const helper = require('./lib/helper.js');
-const objects = require('./lib/objectcache.js')
+const bodyParser = require('body-parser');
 
 process.env.TZ = 'UTC';
 
@@ -10,22 +11,13 @@ require('./lib/tcpClient.js')
 require('./lib/sslClient.js')
 
 const app = express();
-
+app.set('trust proxy', 'uniquelocal');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.use(bodyParser.json()); // for parsing application/json
+app.use('/', routes);
 app.use(express.static(__dirname + "/../frontend"));
 
-app.get('/', (req, res) => {
-  helper.cLog(req);
-  res.sendFile('index.html', {
-    root: __dirname + "/../frontend"
-  });
-})
-
-app.get('/list', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  points = objects.getAll();
-  res.send(points);
-  helper.cLog(req);
-})
 
 app.listen(3000, () => {
   console.log(`TAK-WEB-MAP server started`);

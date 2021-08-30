@@ -10,9 +10,11 @@ module.exports.newMarker = (uid, feature) => {
   }
 
   let SIDC = `s${affil}${et[2]}p${et[3] || "-" }${et[4] || "-" }${et[5] || "-" }${et[6] || "-" }-------`;
-  callsign = feature.callsign;
+  callsign = (feature.callsign != '@@@@@@@@') ? feature.callsign : "not set";
   lat = feature.point.lat;
   lon = feature.point.lon;
+  course = (feature.hasOwnProperty('track')) ? (feature.track.hasOwnProperty('course')) ? feature.track.course : undefined : undefined;
+  speed = (feature.hasOwnProperty('track')) ? (feature.track.hasOwnProperty('speed')) ? Math.round(feature.track.speed) +"kn" : undefined : undefined;
   altm = parseInt(feature.point.hae);
   altft = Math.round(altm * 3.28084);
   remarks = feature.remarks;
@@ -30,8 +32,10 @@ module.exports.newMarker = (uid, feature) => {
     var mysymbol = new ms.Symbol(
       SIDC, {
         uniqueDesignation: callsign,
-        staffComments: altft + "ft",
-        additionalInformation: squawk
+        altitudeDepth: altft + "ft",
+        additionalInformation: squawk,
+        direction: course,
+        speed: speed
       }, {
         infoBackground: bg,
         infoColor: fg
@@ -39,7 +43,8 @@ module.exports.newMarker = (uid, feature) => {
   } else {
     var mysymbol = new ms.Symbol(
       SIDC, {
-        uniqueDesignation: callsign
+        uniqueDesignation: callsign,
+        direction: course
       }, {
         infoBackground: "white",
         infoColor: "black"
