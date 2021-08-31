@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
   cLog(req);
   res.render('index', {
     name: "index",
-    sitename: (typeof process.env.SITENAME !== 'undefined') ? 'build:' + process.env.SITENAME : 'TAK-WEB-MAP',
+    sitename: (typeof process.env.SITENAME !== 'undefined') ? process.env.SITENAME : 'TAK-WEB-MAP',
     version: (typeof process.env.VERSION !== 'undefined') ? 'build:' + process.env.VERSION : 'Development version'
   });
 });
